@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mtls-scanner"
+version = "1.0.0"
+description = "Scans mTLS endpoints for client-certificate chain validation misconfigurations"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "mtls-scanner contributors" }
+]
+keywords = [
+    "mtls", "tls", "security", "scanner", "certificate", "x509",
+    "pentest", "appsec", "vulnerability", "client-authentication"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "cryptography>=41.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "flake8>=6.1.0",
+    "black>=23.9.0",
+    "mypy>=1.5.0",
+    "pyOpenSSL>=23.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/mtls-scanner"
+Repository = "https://github.com/your-org/mtls-scanner"
+Issues = "https://github.com/your-org/mtls-scanner/issues"
+Changelog = "https://github.com/your-org/mtls-scanner/blob/main/CHANGELOG.md"
+
+[project.scripts]
+mtls-scanner = "mtls_scanner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mtls_scanner*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.black]
+line-length = 110
+target-version = ["py39"]
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
